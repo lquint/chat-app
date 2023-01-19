@@ -7,7 +7,7 @@ console.log(uri)
 
 mongoose.set('strictQuery', true);
 
-mongoose.connect(uri)
+mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDB connected...');
   })

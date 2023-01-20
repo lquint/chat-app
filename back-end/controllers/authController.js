@@ -1,12 +1,13 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
-
+const authService = require('../services/authService')
 
 const signup = async (req,res) => {
     try {
-        const user = new User(req.body);
-        await user.save();
-        res.json({ message: 'Successfully created a new user' });
+        //TODO entries validation
+        const response = await authService.signupUser(req.body)
+        console.log(response)
+        res.json({ message: 'Successfully created a new user', response });
       } catch (err) {
         res.status(500).json({ message: err.message });
       }
